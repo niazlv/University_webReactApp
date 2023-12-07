@@ -1,0 +1,52 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 44px;
+    margin-bottom: 60px;
+    color: #bcc9db;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    margin-right: 20px;
+}
+.logo-text p{
+    font-weight: 700;
+    font-size: 18px;
+}
+.left{
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 52px;
+    position: relative;
+    z-index: 4;
+}
+.login{
+    display: flex;
+    align-items: center;
+}
+.login svg{
+    margin-right: 10px;
+}
+.login a{
+    color: #bcc9db;
+}
+
+.register{
+    padding: 8px 24px;
+    background: #4cd0a1;
+    border-radius: 24px;
+    color: #1c1d22;
+    a {
+        color: #1c1d22;
+    }
+    a svg{
+        margin-left: 10px;
+    }
+}
