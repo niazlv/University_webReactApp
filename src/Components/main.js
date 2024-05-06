@@ -7,6 +7,7 @@ import planet from '../img/planet.png';
 class Main extends React.Component {
     render() {
         return (<div className='main'>
+            <img className='planet' src={planet} style={{zIndex: -999,opacity: 0.6}}/>
             <div className="info">
                 <div className="title">Профессиональный VPN-сервис</div>
                 <div className="bubbles">
@@ -20,7 +21,7 @@ class Main extends React.Component {
                 </div>
             </div>
             <div className="light"></div>
-            <img className='planet' src={planet}/>
+            
             <div className="whyus">
                 <div className="title">Почему именно мы?</div>
                 <div className="list">

@@ -20,10 +20,10 @@ class Header extends React.Component{
             <div className="right">
                 <div className="login">
                     <FontAwesomeIcon icon={faUser} />
-                    <a href='#'>Войти</a>
+                    <a href='/login'>Войти</a>
                 </div>
                 <div className="register">
-                    <a href='#'>Начать <FontAwesomeIcon icon={faRocket} /></a>
+                    <a href='/signup'>Начать <FontAwesomeIcon icon={faRocket} /></a>
                 </div>
             </div>
         </header>)
