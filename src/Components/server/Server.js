@@ -35,7 +35,7 @@ export function register(firstName, lastName, email, password) {
   }
 
   
-  const newUser = { firstName, lastName, email, password, _id:1};
+  const newUser = { firstName, lastName, email, password, _id:getNextId()};
   //console.log("newUser %s", JSON.stringify(newUser));
   users.push(newUser);
   //console.log("users %s", JSON.stringify(users));

@@ -1,0 +1,73 @@
+.Cart {
+    text-align: center;
+    background-color: #0f0f0f;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .Cart-header {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    flex-direction: column;
+  }
+  
+  .cart-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .cart-item {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-item h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .remove-button, .back-to-catalog-button, .purchase-button {
+    background-color: #00bfa5;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .remove-button:hover {
+    background-color: #008f7a;
+  }
+  
+  .cart-summary h2 {
+    margin-bottom: 20px; /* Отступ снизу */
+  }
+
+  .purchase-button {
+    padding: 15px 30px; /* Увеличиваем внутренние отступы для большего размера кнопки */
+    font-size: 18px; /* Увеличиваем размер шрифта */
+    width: 100%; /* Кнопка будет занимать всю ширину контейнера */
+    max-width: 300px; /* Опционально: Максимальная ширина кнопки */
+    background-color: #28a745; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор-указатель при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+  }
+  
+  .purchase-button:hover {
+    background-color: #218838; /* Цвет фона при наведении */
+  }

@@ -1,0 +1,16 @@
+.Checkout-header {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+.back-to-catalog-button {
+    background-color: #00bfa5;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

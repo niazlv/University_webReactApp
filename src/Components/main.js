@@ -7,7 +7,7 @@ import planet from '../img/planet.png';
 class Main extends React.Component {
     render() {
         return (<div className='main'>
-            <img className='planet' src={planet} style={{zIndex: -999,opacity: 0.6}}/>
+            <img className='planet' src={planet} style={{opacity: 0.6}}/>
             <div className="info">
                 <div className="title">Профессиональный VPN-сервис</div>
                 <div className="bubbles">
@@ -15,15 +15,15 @@ class Main extends React.Component {
                     <div className="point">Безопасно</div>
                     <div className="point">Надежно</div>
                 </div>
-                <div className="subtitle">
+                <div className="subtitle" style={{zIndex:10}}>
                     <FontAwesomeIcon icon={faBolt}/>
                     <div className="text">Быстрая работа с огромным количеством серверов по всему миру</div>
                 </div>
             </div>
             <div className="light"></div>
             
-            <div className="whyus">
-                <div className="title">Почему именно мы?</div>
+            <div className="whyus" style={{zIndex:10}}>
+                <div className="title" style={{zIndex:11}}>Почему именно мы?</div>
                 <div className="list">
                     <div className="point">Полная конфиденциальность<br/>ваших данных</div>
                     <div className="point">Неограниченное количество<br/>подключенных устройств</div>
@@ -40,7 +40,7 @@ class Main extends React.Component {
                 <div className="subtitle">Выберите подходящий Вам тариф</div>
                 <div className="plans">
                     <div className="sub-plan-big">
-                        <a href="#" className="buy">Купить</a>
+                        <a href="/catalog" className="buy">Купить</a>
                         <div className="bottom">
                             <div className="price">
                                 <div className="upper">494.86<span>₽</span></div>
@@ -50,7 +50,7 @@ class Main extends React.Component {
                         </div>
                     </div>
                     <div className="sub-plan-big">
-                        <a href="#" className="buy">Купить</a>
+                        <a href="/catalog" className="buy">Купить</a>
                         <div className="bottom">
                             <div className="price">
                                 <div className="upper">449.88<span>₽</span></div>
@@ -60,7 +60,7 @@ class Main extends React.Component {
                         </div>
                     </div>
                     <div className="sub-plan-big">
-                        <a href="#" className="buy">Купить</a>
+                        <a href="/catalog" className="buy">Купить</a>
                         <div className="bottom">
                             <div className="price">
                                 <div className="upper">404.89<span>₽</span></div>
@@ -70,7 +70,7 @@ class Main extends React.Component {
                         </div>
                     </div>
                     <div className="sub-plan-big">
-                        <a href="#" className="buy">Купить</a>
+                        <a href="/catalog" className="buy">Купить</a>
                         <div className="bottom">
                             <div className="price">
                                 <div className="upper">337.41<span>₽</span></div>
@@ -80,7 +80,7 @@ class Main extends React.Component {
                         </div>
                     </div>
                     <div className="sub-plan-big">
-                        <a href="#" className="buy">Купить</a>
+                        <a href="/catalog" className="buy">Купить</a>
                         <div className="bottom">
                             <div className="price">
                                 <div className="upper">247.43<span>₽</span></div>
