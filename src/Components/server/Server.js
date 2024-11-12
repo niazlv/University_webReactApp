@@ -1,57 +1,89 @@
 let user = null;
 
-export function login(email, password) {
-  const storedUsers = localStorage.getItem('users');
-//   const storedId = localStorage.getItem('id');
-//   const _id = storedId ? JSON.parse(storedId): [];
-  const users = storedUsers ? JSON.parse(storedUsers) : [];
+export async function login(email, password) {
+  return fetch('http://localhost:8080/login.php', {
+    method: 'POST',
+    credentials: 'include', // Включаем куки для поддержания сессии
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.user) {
+        user = data.user;
+        return { message: data.message, user: user };
+      } else {
+        return { message: data.message };
+      }
+    })
+    .catch((error) => {
+      console.error('Ошибка при входе:', error);
+      return { message: 'Ошибка при входе' };
+    });
+}
 
-  const matchedUser = users.find(
-    user => user.email === email && user.password === password
-  );
+export async function register(firstName, lastName, email, password) {
+  return fetch('http://localhost:8080/register.php', {
+    method: 'POST',
+    credentials: 'include', // Включаем куки для поддержания сессии
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.user) {
+        user = data.user;
+        return { message: data.message };
+      } else {
+        return { message: data.message };
+      }
+    })
+    .catch((error) => {
+      console.error('Ошибка при регистрации:', error);
+      return { message: 'Ошибка при регистрации' };
+    });
+}
 
-  if (matchedUser) {
-    user = matchedUser;
-    localStorage.setItem('user', JSON.stringify(matchedUser));
-    return { message: 'Login successfully', user: user};  
+export async function logout() {
+  return fetch('http://localhost:8080/logout.php', {
+    method: 'POST',
+    credentials: 'include',
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      user = null;
+      return { message: data.message };
+    })
+    .catch((error) => {
+      console.error('Ошибка при выходе:', error);
+      return { message: 'Ошибка при выходе' };
+    });
+}
+
+export async function getUser() {
+  if (user) {
+    return Promise.resolve(user);
   } else {
-    return { message: 'Invalid email or password' };
+    return fetch('http://localhost:8080/get_user.php', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user) {
+          user = data.user;
+          return user;
+        } else {
+          return null;
+        }
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении пользователя:', error);
+        return null;
+      });
   }
-}
-function getNextId() {
-    const storedUsers = localStorage.getItem('users');
-    const users = storedUsers ? JSON.parse(storedUsers) : [];
-    return users.length ? Math.max(...users.map(u => u._id)) + 1 : 1;  
-}
-
-export function register(firstName, lastName, email, password) {
-  const storedUsers = localStorage.getItem('users');
-  const users = storedUsers ? JSON.parse(storedUsers) : [];
-
-  const userExists = users.find(user => user.email === email);
-
-  if (userExists) {
-    return { message: 'User already registered' };
-  }
-
-  
-  const newUser = { firstName, lastName, email, password, _id:getNextId()};
-  //console.log("newUser %s", JSON.stringify(newUser));
-  users.push(newUser);
-  //console.log("users %s", JSON.stringify(users));
-  localStorage.setItem('users', JSON.stringify(users));
-
-  user = newUser; 
-  localStorage.setItem('user', JSON.stringify(newUser));
-
-  return { message: 'Account created' }; 
-}
-
-export function logout() {
-  user = null;
-  localStorage.removeItem('user');
-}
-
-export function getUser() {
-  return user;  
 }

@@ -43,31 +43,35 @@ const Login = ({ setUserState }) => {
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(user);
-      const result = login(
-        user.email, 
-        user.password
-      );
-     
-      if (result.message === 'Login successfully') {
-        alert('Логин прошел успешно!');
-        
-        //const loggedInUser = getUser();
-        //setUser(loggedInUser);
-        console.log(result)
-        setUserState(result.user);
-  
-        navigate('/',{ replace: true });
-      } else {
-        alert(result.message);
+    const handleLogin = async () => {
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        console.log(user);
+        const result = await login(
+          user.email, 
+          user.password
+        );
+        console.log(result);
+       
+        if (result.message === 'Login successfully') {
+          alert('Логин прошел успешно!');
+          
+          //const loggedInUser = getUser();
+          //setUser(loggedInUser);
+          console.log(result)
+          setUserState(result.user);
+    
+          navigate('/',{ replace: true });
+        } else {
+          alert(result.message);
+        }
+        // axios.post("http://localhost:9002/login", user).then((res) => {
+        //   alert(res.data.message);
+        //   setUserState(res.data.user);
+        //   navigate("/", { replace: true });
+        // });
       }
-      // axios.post("http://localhost:9002/login", user).then((res) => {
-      //   alert(res.data.message);
-      //   setUserState(res.data.user);
-      //   navigate("/", { replace: true });
-      // });
-    }
+    };
+    handleLogin();
   }, [formErrors]);
   return (
     <div className={loginstyle.container}>

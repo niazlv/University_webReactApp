@@ -63,22 +63,25 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(user);
-      const result = register(
-        user.fname, 
-        user.lname,
-        user.email,
-        user.password
-      );
-      
-      if (result.message === 'Account created') {
-        alert('Регистрация прошла успешно!');
-        navigate('/login');
-      } else {
-        alert(result.message); 
+    const handleRegister = async () => {
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        console.log(user);
+        const result = await register(
+          user.fname, 
+          user.lname,
+          user.email,
+          user.password
+        );
+        
+        if (result.message === 'Account created') {
+          alert('Регистрация прошла успешно!');
+          navigate('/login');
+        } else {
+          alert(result.message); 
+        }
       }
-    }
+    };
+    handleRegister();
   }, [formErrors]);
   return (
     <>
